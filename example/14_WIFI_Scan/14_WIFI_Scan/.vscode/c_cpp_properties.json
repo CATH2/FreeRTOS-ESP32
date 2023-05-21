@@ -1,0 +1,38 @@
+{
+	"configurations": [
+		{	// IDF_TOOLS_PATH与IDF_PATH为用户环境变量，如果没有自动根据IDF_TOOL和IDF库目录进行添加
+			// 例如我的			IDF_PATH = F:\ESP32\Espressif\frameworks\esp-idf-v4.4.2
+			//				IDF_TOOLS_PATH = F:\ESP32\Espressif
+			"name": "Win32",
+			"includePath": [
+				"${workspaceFolder}/**",
+				"${workspaceFolder}/build/config/**",// 此项带波浪线，需编译产生build目录才能正常
+				"${env.IDF_TOOLS_PATH}/tools/xtensa-esp32-elf/esp-2020r3-8.4.0/xtensa-esp32-elf/xtensa-esp32-elf/include/sys/**",
+				"${env.IDF_TOOLS_PATH}/tools/xtensa-esp32-elf/esp-2020r3-8.4.0/xtensa-esp32-elf/xtensa-esp32-elf/include/**",
+				"${env.IDF_PATH}/components/**",
+				"${env.IDF_PATH}/components/log/include/**",
+				"${env.IDF_PATH}/components/spi_flash/include/**",
+				"${env.IDF_PATH}/components/app_update/include/**",
+				"${env.IDF_PATH}/components/esp_adc_cal/include/**",
+				"${env.IDF_PATH}/components/bootloader_support/include/**",
+				"${env.IDF_PATH}/components/driver/include/driver/**",
+				"${env.IDF_PATH}/components/libsodium/libsodium/src/libsodium/include/sodium/private/**",
+				"${env.IDF_PATH}/examples/common_components/protocol_examples_common/include/**"
+			],
+			"defines": [
+				"_STDINT",
+				"__CC_ARM",
+				"_DEBUG",
+				"UNICODE",
+				"_UNICODE"
+				
+			],
+			"compilerPath": "${env.IDF_TOOLS_PATH}/tools/xtensa-esp32-elf/esp-2020r3-8.4.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc",
+			"windowsSdkVersion": "10.0.17763.0",
+			"cStandard": "c11",
+			"cppStandard": "c++17",
+			"intelliSenseMode": "msvc-x64"
+		}
+	],
+	"version": 4
+}

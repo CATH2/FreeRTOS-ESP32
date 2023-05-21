@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdint.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "esp_system.h"
+#include "../build/config/sdkconfig.h"
+#include "esp_log.h"
+
+static const char *TAG = "2_Task";
+
+void Task1(void* param)
+{
+    while(1)
+    {
+        ESP_LOGI(TAG,"Task1");
+        vTaskDelay(1000/portTICK_PERIOD_MS);
+    }
+}
+ 
+void Task2(void* param)
+{
+    while(1)
+    {
+        ESP_LOGI(TAG,"Task2");
+        vTaskDelay(1000/portTICK_PERIOD_MS);
+    }
+}
+
+void app_main(void)
+{
+	//定义任务句柄
+    TaskHandle_t pxTask1;
+	TaskHandle_t pxTask2;
+	
+    xTaskCreate(Task1,"Task1",2048,NULL,1,&pxTask1);
+	xTaskCreate(Task2,"Task1",2048,NULL,1,&pxTask2);
+	
+	
+    UBaseType_t Stack1;
+	UBaseType_t Stack2;
+	
+    while(1)
+    {
+		//获取任务堆栈大小
+        Stack1=uxTaskGetStackHighWaterMark(pxTask1);
+		Stack2=uxTaskGetStackHighWaterMark(pxTask2);
+		
+        printf("Task1 stack=%d\n",Stack1);
+		printf("Task2 stack=%d\n",Stack2);
+        vTaskDelay(3000/portTICK_PERIOD_MS);
+    }
+}

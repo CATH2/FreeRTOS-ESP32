@@ -1,0 +1,5 @@
+source "D:/Soft/ESP32/esp_idf_v4.3/components/app_update/Kconfig.projbuild"
+source "D:/Soft/ESP32/esp_idf_v4.3/components/bootloader/Kconfig.projbuild"
+source "D:/Soft/ESP32/esp_idf_v4.3/components/esptool_py/Kconfig.projbuild"
+source "D:/Soft/ESP32/esp_idf_v4.3/components/partition_table/Kconfig.projbuild"
+source "D:/ProjectData/Idf-Data/idf_study/9_DHT11_RMT/9_DHT11_RMT/main/Kconfig.projbuild"

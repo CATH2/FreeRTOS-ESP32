@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "sdkconfig.h"
+#include <esp_log.h>
+
+static const char * TAG = "Task";
+
+void Task1(void* param) //传入空指针方便后期传入参数:
+{
+    while(1)
+    {
+		ESP_LOGI(TAG,"执行任务1");
+        //printf("Hello Task!\n");//打印Hello Task!
+        vTaskDelay(1000/portTICK_PERIOD_MS);//延时1000ms=1s,使系统执行其他任务
+    }
+ 
+}
+
+void Task2(void* param) //传入空指针方便后期传入参数:
+{
+    while(1)
+    {
+		ESP_LOGI(TAG,"执行任务2");
+        //printf("Hello Task!\n");//打印Hello Task!
+        vTaskDelay(1000/portTICK_PERIOD_MS);//延时1000ms=1s,使系统执行其他任务
+		
+		vTaskDelete(NULL);
+    }
+ 
+}
+
+void app_main(void)
+{
+	
+	
+	ESP_LOGI(TAG,"FREERTOS 已启动！");
+	
+	TaskHandle_t TaskPoint=NULL;//创造一个TaskHandle_t类型的指针变量,用于存放任务句柄
+	
+	
+    xTaskCreate(Task1,"Task1",2048,NULL,1,NULL);//创建任务1
+	vTaskDelay(800/portTICK_PERIOD_MS);
+	
+	xTaskCreate(Task2,"Task2",2048,NULL,1,&TaskPoint);//创建任务2，并将句柄值返回给TaskPoint
+	
+	//5s后 删除任务2
+	vTaskDelay(5000/portTICK_PERIOD_MS);
+	vTaskDelete(TaskPoint);
+}

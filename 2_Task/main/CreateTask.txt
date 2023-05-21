@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "sdkconfig.h"
+#include <esp_log.h>
+
+static const char * TAG = "Task";
+
+void Task1(void* param) //传入空指针方便后期传入参数:
+{
+    while(1)
+    {
+		ESP_LOGI(TAG,"执行任务1");
+        //printf("Hello Task!\n");//打印Hello Task!
+        vTaskDelay(1000/portTICK_PERIOD_MS);//延时1000ms=1s,使系统执行其他任务
+    }
+ 
+}
+
+void Task2(void* param) //传入空指针方便后期传入参数:
+{
+    while(1)
+    {
+		ESP_LOGI(TAG,"执行任务2");
+        //printf("Hello Task!\n");//打印Hello Task!
+        vTaskDelay(1000/portTICK_PERIOD_MS);//延时1000ms=1s,使系统执行其他任务
+    }
+ 
+}
+
+void app_main(void)
+{
+	ESP_LOGI(TAG,"FREERTOS 已启动！");
+    xTaskCreate(Task1,"Task1",2048,NULL,1,NULL);//创建任务1
+	vTaskDelay(800/portTICK_PERIOD_MS);
+	xTaskCreate(Task2,"Task2",2048,NULL,1,NULL);//创建任务2
+	
+	//xTaskCreate(TaskFun,TaskName,StackSize,Param,Priority,*Task)
+    //1:TaskFun 任务函数
+    //2:TaskName 任务名字
+    //3:StackSize 任务堆栈大小
+    //4:Param 任务传入参数
+    //5:Priority 任务优先级,最低优先级为0=空闲任务,可以设置0-31
+    //6:Task 任务句柄任务创建成功后会返回这个句柄,其他api任务接口可调用这个句柄    
+}

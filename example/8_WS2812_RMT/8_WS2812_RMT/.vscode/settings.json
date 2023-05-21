@@ -1,0 +1,49 @@
+{
+    "files.associations": {
+		"array": "c",
+		"vector": "c",
+		"xstring": "c",
+		"xutility": "c",
+		"random": "c",
+		"*.ipp": "c",
+		"tsc2007.h": "c",
+		"i2c.h": "c",
+		"gpio.h": "c",
+		"nvs_flash.h": "c",
+		"bl5372.h": "c",
+		"key.h": "c",
+		"esp_adc_cal.h": "c",
+		"event_groups.h": "c",
+		"esp_log.h": "c",
+		"uart.h": "c",
+		"sdkconfig.h": "c",
+		"freertos.h": "c",
+		"dht11.h": "c",
+		"charconv": "cpp",
+		"ws2812.h": "c",
+		"esp_system.h": "c",
+		"bit": "c",
+		"compare": "c",
+		"cstddef": "c",
+		"fstream": "c",
+		"iterator": "c",
+		"limits": "c",
+		"memory": "c",
+		"mutex": "c",
+		"sstream": "c",
+		"system_error": "c",
+		"type_traits": "c",
+		"xhash": "c",
+		"xtree": "c",
+		"condition_variable": "c",
+		"string": "c",
+		"optional": "c",
+		"new": "c"
+	},
+	"editor.insertSpaces": false,				// 不检测到第一个是tab后面都用tab
+	"editor.detectIndentation": false,			// 不检测到第一个是tab后面都用tab
+	"editor.renderControlCharacters": true, 	// 显示制表符是→
+	"editor.renderWhitespace": "all",			// 显示4个空格是....
+	"editor.tabSize": 4,						// tab设置为4个空格
+	"MyIdfLibPath":"F:/ESP32/ESP_IDF/esp-idf-v4.3/components"
+}

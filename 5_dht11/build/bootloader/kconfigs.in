@@ -1,0 +1,7 @@
+source "D:/Soft/ESP32/esp_idf_v4.3.1/components/efuse/Kconfig"
+source "D:/Soft/ESP32/esp_idf_v4.3.1/components/esp32/Kconfig"
+source "D:/Soft/ESP32/esp_idf_v4.3.1/components/esp_common/Kconfig"
+source "D:/Soft/ESP32/esp_idf_v4.3.1/components/esp_system/Kconfig"
+source "D:/Soft/ESP32/esp_idf_v4.3.1/components/log/Kconfig"
+source "D:/Soft/ESP32/esp_idf_v4.3.1/components/newlib/Kconfig"
+source "D:/Soft/ESP32/esp_idf_v4.3.1/components/spi_flash/Kconfig"

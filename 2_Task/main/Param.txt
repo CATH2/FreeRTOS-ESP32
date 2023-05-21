@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "sdkconfig.h"
+#include <esp_log.h>
+
+static const char * TAG = "Task";
+static const char *teststr="HelloWorld!"
+
+
+void Task1(void* param)
+{
+    char *pstr=(char *)param;//创建一个char类型的指针
+    
+    printf("%s \n",pstr);//打印pStrtest指针的内容用于验证参数是否传入任务函数中
+ 
+    vTaskDelay(1000/portTICK_PERIOD_MS);
+    vTaskDelete(NULL);//删除当前任务
+}
+
+void app_main(void)
+{
+    xTaskCreate(Task1,"task1",2048,(void *)&teststr,1,NULL);//字符名本身就是首地址，无需&
+}
+

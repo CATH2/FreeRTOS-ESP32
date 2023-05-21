@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdint.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "esp_system.h"
+#include "../build/config/sdkconfig.h"
+#include "esp_log.h"
+
+static const char *TAG = "Resume";
+
+void Task1(void* param)
+{
+    while(1)
+    {
+        ESP_LOGI(TAG,"Task1");
+        vTaskDelay(1000/portTICK_PERIOD_MS);
+    }
+}
+ 
+void Task2(void* param)
+{
+    while(1)
+    {
+        ESP_LOGI(TAG,"Task2");
+        vTaskDelay(1000/portTICK_PERIOD_MS);
+    }
+}
+ 
+ 
+
+void app_main(void)
+{
+    TaskHandle_t pxtask=NULL;//任务句柄定义
+	
+    xTaskCreate(Task1,"Task1",2048,NULL,1,NULL);
+    xTaskCreate(Task2,"Task2",2048,NULL,1,&pxtask);
+	
+    vTaskSuspend(pxtask);//任务挂起
+	
+    vTaskDelay(4000/portTICK_PERIOD_MS);//4S后恢复任务
+    vTaskResume(pxtask);//任务恢复
+}
